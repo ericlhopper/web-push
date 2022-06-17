@@ -1,6 +1,6 @@
 self.addEventListener('push', (e) => {
 
-  const data = e.data.json();
+  //const data = e.data.json();
   
   //self.registeration.sendNotification(data.title);
   
