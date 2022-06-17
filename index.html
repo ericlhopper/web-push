@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
     <button onclick="subscribe()">Subscribe</button>
+    <div id='text'></div>
 
     <script>
       async function subscribe() {
-        /**
-         * references:
-         * - https://stackoverflow.com/questions/45994933/changing-application-server-key-in-push-manager-subscription
-         * - https://w3c.github.io/push-api/#dfn-push-subscription
-         * - https://felixgerschau.com/web-push-notifications-tutorial/
-         * - https://app.netlify.com/teams/ericlhopper/overview
-         */
         var NEW_PUBLIC_KEY = 'BFLar7l4oJVMiHQehmd0N9gh2at7x1yWdAUB9KIhOT4-n9kIdUcbyuWIS1clEy5ciD-3oEYGU9ThHlarxsQxlH8';
 
         Notification.requestPermission(function (permissionResult) {
@@ -62,6 +57,7 @@
           .then(subscription => {
             //successfully subscribed to push
             //save it to your DB etc....
+            log('subscription: '+ JSON.stringify(subscription));
             console.log('subscription: '+ JSON.stringify(subscription));
           });
         }
@@ -77,11 +73,16 @@
           }
           return outputArray;
         }
+
+        function log(text) {
+          $("div#text").append(text);
+        }
       }
 
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
+          log('serviceWorker sw.js loaded!');
           console.log('serviceWorker sw.js loaded!');
         });
       }
