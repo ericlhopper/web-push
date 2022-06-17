@@ -14,8 +14,9 @@
         let sw = await navigator.serviceWorker.ready;
         let push = await sw.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: 'BMDwYkYu4jJfJff4lAytigMUnEb0J7nv_LYLwFhV4I9o_-6Dvf_ceNLN8yshkpwlQovddTuz9tgOU9gUgOuFks0'
+          applicationServerKey: 'BFLar7l4oJVMiHQehmd0N9gh2at7x1yWdAUB9KIhOT4-n9kIdUcbyuWIS1clEy5ciD-3oEYGU9ThHlarxsQxlH8'
         });
+        // Save this subscription for sending push notifications
         console.log(JSON.stringify(push));
       }
 
