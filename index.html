@@ -15,21 +15,25 @@
       async function subscribe() {
         var NEW_PUBLIC_KEY = 'BFLar7l4oJVMiHQehmd0N9gh2at7x1yWdAUB9KIhOT4-n9kIdUcbyuWIS1clEy5ciD-3oEYGU9ThHlarxsQxlH8';
 
+        function log(text) {
+          $("div#text").append(text);
+          console.log(text);
+        }
+
         Notification.requestPermission(function (permissionResult) {
-          if (permissionResult == 'granted'){
+          log(`permissionResult: ${permissionResult}`);
+          if (permissionResult === 'granted') {
             subscribeUser();
           }
         });
             
-        function log(text) {
-          $("div#text").append(text);
-        }
-
         function subscribeUser() {
           navigator.serviceWorker.ready
           .then(registration => {
+            log(`navigator.serviceWorker.ready`);
             registration.pushManager.getSubscription()
             .then(pushSubscription => {
+              log(`pushSubscription: ${pushSubscription}`);
               if (!pushSubscription){
                 //the user was never subscribed
                 subscribe(registration);
@@ -38,14 +42,17 @@
                 let json = pushSubscription.toJSON();
                 let public_key = json.keys.p256dh;
                 
-                console.log(`public_key: ${public_key}`);
+                log(`public_key: ${public_key}`);
                 
                 if (public_key != NEW_PUBLIC_KEY) {
-                  pushSubscription.unsubscribe().then(successful => {
+                  log(`unsubscribing...`);
+                  pushSubscription.unsubscribe().then((result) => {
                     // You've successfully unsubscribed
+                    log(`unsubscribe success: ${result}`);
                     subscribe(registration);
-                  }).catch(e => {
+                  }).catch((err) => {
                     // Unsubscription failed
+                    log(`unsubscribe failed: ${err}`);
                   })
                 }
               }
@@ -61,8 +68,10 @@
           .then(subscription => {
             //successfully subscribed to push
             //save it to your DB etc....
-            log('subscription: '+ JSON.stringify(subscription));
-            console.log('subscription: '+ JSON.stringify(subscription));
+            log(`subscribe success: ${subscription}`);
+          })
+          .catch((err) => {
+            log(`subscribe failed: ${err}`);
           });
         }
 
