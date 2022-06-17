@@ -22,7 +22,8 @@
 
         Notification.requestPermission(function (permissionResult) {
           log(`permissionResult: ${permissionResult}`);
-          if (permissionResult === 'granted') {
+          // checking for not denied rather than granted, as some browsers will return undefined
+          if (permissionResult !== 'denied') {
             subscribeUser();
           }
         });
