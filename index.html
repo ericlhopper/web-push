@@ -21,6 +21,10 @@
           }
         });
             
+        function log(text) {
+          $("div#text").append(text);
+        }
+
         function subscribeUser() {
           navigator.serviceWorker.ready
           .then(registration => {
@@ -73,16 +77,11 @@
           }
           return outputArray;
         }
-
-        function log(text) {
-          $("div#text").append(text);
-        }
       }
 
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
-          log('serviceWorker sw.js loaded!');
           console.log('serviceWorker sw.js loaded!');
         });
       }
