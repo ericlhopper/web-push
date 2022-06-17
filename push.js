@@ -24,9 +24,7 @@ let subscription = {
   },
 };
 
-push.sendNotification(subscription, 'hello world!', {
-    contentEncoding: 'aesgcm'
-  })
+push.sendNotification(subscription, 'hello world!')
   .then((res) => {
     console.log('notification response: ', res);
   })
