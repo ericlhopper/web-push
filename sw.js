@@ -4,6 +4,6 @@ self.addEventListener('push', (e) => {
   
   //self.registration.sendNotification(data.title);
   
-  self.registration.showNotification('Hello World', {body: 'test body'})
+  self.registration.showNotification('Hello World')
 
 });
