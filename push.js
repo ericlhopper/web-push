@@ -15,12 +15,12 @@ push.setVapidDetails(
 // this value would normally be logged into a database. Used to send push notification back to the browser.
 let subscription = {
   endpoint:
-    "https://fcm.googleapis.com/fcm/send/fhT90wDOmY8:APA91bG5r-GxIS1tHhOdqP7DmSkaf9DGYCgaCZDreiL_pPfBI-5uUlK5ezgUdtm2rjfvj2on3hKd_s5P8ZKa-MlAsrICRlQFfMc1fuP0j5ABSMTd6iTnCxKoy1K0sfjBy45YPbt8pQ8G",
+    "https://fcm.googleapis.com/fcm/send/f0TQx-QIJ_Q:APA91bHWLJlDmsuaqxU7atP_CYJpZIRsZ77rPRsFkglXgBdHiCPhv6yJsfEkG6YtPmuTWzI0ZRV1Mocc2KdIwSF3gNJet18zb2Z8dYbTu7E2-RDIE5xoLGhUvmPEO6DB9TKpBNUi0wk8",
   expirationTime: null,
   keys: {
     p256dh:
-      "BHbb-BGExc4X22Fa4yLgRe8T5JE8O9Y8qzMtJXofVQzg2FRq7-lx9_VcLzEgUKhH-M6WelclyX9AtpxOlnl-64A",
-    auth: "09-8SL_Sw2MTRKfWsYqPOw",
+      "BJeJNa0vpOpGgtUYXn3-wbbSa5LCs3672BLsS1924mIgw5pRS_6BXaWs8jOGRhliwfb1i_MkTT0I9QUDCJxgQR4",
+    auth: "F-uM15mdMoqfRuN8iK_JLw",
   },
 };
 

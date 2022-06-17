@@ -11,6 +11,7 @@
 
     <script>
       async function subscribe() {
+        // ref: https://stackoverflow.com/questions/45994933/changing-application-server-key-in-push-manager-subscription
         var NEW_PUBLIC_KEY = 'BFLar7l4oJVMiHQehmd0N9gh2at7x1yWdAUB9KIhOT4-n9kIdUcbyuWIS1clEy5ciD-3oEYGU9ThHlarxsQxlH8';
 
         Notification.requestPermission(function (permissionResult) {
@@ -75,7 +76,7 @@
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
-          console.log(sw);
+          console.log('serviceWorker sw.js loaded!');
         });
       }
     </script>
