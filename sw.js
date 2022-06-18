@@ -38,7 +38,7 @@ self.addEventListener('push', (e) => {
     body: 'Proceed to accept or reject this authentication reqeust',
     requireInteraction: true, // visible until user clicks or dismisses
     vibrate: [200, 100, 200, 100, 200, 100, 200], // vibration patter to play when notification is dislpayed
-    icon: './img/id-go.png',
+    icon: './img/unitus-logo.png',
   };
   
   self.registration.showNotification(title, options)
