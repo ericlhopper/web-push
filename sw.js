@@ -6,7 +6,7 @@ self.addEventListener('push', (e) => {
     requireInteraction: true, // visible until user clicks or dismisses
     vibrate: [200, 100, 200, 100, 200, 100, 200], // vibration patter to play when notification is dislpayed
     icon: './img/id-go.png',
-    image: './img/unitus-logo.png',
+    image: './img/unitus-logo-360-240.png', // needs to be 360x240
   };
   
   self.registration.showNotification(title, options)
