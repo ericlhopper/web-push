@@ -1,12 +1,5 @@
 self.addEventListener('push', (e) => {
 
-  //const data = e.data.json();
-  
-  self.addEventListener('notificationclick', (e) => {
-    //var doge = e.notification.data.doge;
-    window.open('https://agent.dev.cozera.io/#demo1');
-  });
-
   self.addEventListener('notificationclick', (event) => {
     console.log('On notification click: ', event.notification?.tag);
     // Android doesn't close the notification when you click on it
