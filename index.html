@@ -16,8 +16,8 @@
         var NEW_PUBLIC_KEY = 'BFLar7l4oJVMiHQehmd0N9gh2at7x1yWdAUB9KIhOT4-n9kIdUcbyuWIS1clEy5ciD-3oEYGU9ThHlarxsQxlH8';
 
         function log(text) {
-          $("div#text").append(text);
           console.log(text);
+          $("div#text").append('<div>'+text+'</div>');
         }
 
         Notification.requestPermission((permissionResult) => {
@@ -31,10 +31,10 @@
         function subscribeUser() {
           navigator.serviceWorker.ready
             .then((reg) => {
-              log(`navigator.serviceWorker.ready()`);
+              log('navigator.serviceWorker.ready()');
               reg.pushManager.getSubscription()
                 .then((sub) => {
-                  log(`getSubscription() sub: %o`, sub);
+                  log('getSubscription() sub:' + JSON.stringify(sub));
                   if (!sub){
                     //the user was never subscribed
                     subscribe(reg);
@@ -46,14 +46,14 @@
                     log(`getSubscription() public_key: ${public_key}`);
                     
                     if (public_key != NEW_PUBLIC_KEY) {
-                      log(`unsubscribe() initiating...`);
+                      log('unsubscribe() initiating...');
                       sub.unsubscribe()
                         .then((result) => {
-                          log(`unsubscribe() success: %o`, result);
+                          log('unsubscribe() success:' + JSON.stringify(result));
                           subscribe(reg);
                         })
                         .catch((err) => {
-                          log(`unsubscribe() failed: %o`, err);
+                          log('unsubscribe() failed:' + JSON.stringify(err));
                         });
                     }
                   }
@@ -69,10 +69,10 @@
           .then((sub) => {
             //successfully subscribed to push
             //save it to your DB etc....
-            log(`subscribe() success: %o`, sub);
+            log('subscribe() success:' + JSON.stringify(sub));
           })
           .catch((err) => {
-            log(`subscribe() failed: %o`, err);
+            log('subscribe() failed:' + JSON.stringify(err));
           });
         }
 
@@ -92,7 +92,7 @@
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
-          console.log('serviceWorker sw.js loaded!');
+          console.log('serviceWorker sw.js loaded:' + JSON.stringify(sw));
         });
       }
     </script>
