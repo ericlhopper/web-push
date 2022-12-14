@@ -34,11 +34,11 @@
               log('navigator.serviceWorker.ready()');
               reg.pushManager.getSubscription()
                 .then((sub) => {
-                  log('getSubscription() sub:' + JSON.stringify(sub, null, 2));
                   if (!sub){
                     //the user was never subscribed
                     subscribe(reg);
                   } else {
+                    log('getSubscription() sub:' + JSON.stringify(sub, null, 2));
                     //check if user was subscribed with a different key
                     const json = sub.toJSON();
                     const public_key = json.keys.p256dh;

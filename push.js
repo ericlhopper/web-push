@@ -14,11 +14,11 @@ push.setVapidDetails(
 // the following json object is created and logged to the console in the index.html subscribe() function
 // this value would normally be logged into a database. Used to send push notification back to the browser.
 let subscription = 
-{ endpoint: "https://fcm.googleapis.com/fcm/send/fyBm-hKX79Q:APA91bHjYCAQ3FvesqW7qCaoFFEo3d10cDhwkLBUrQ1gm20Jkpa5FuBtqOnh7QPgfDY_vMjKX0jPxLuJnSRGLnNWvjwAtk_9L51QkmuxWXpmarE_SxIYZRj_4F6eQ-AFlBvTpXJLUud6"
+{ endpoint: "https://fcm.googleapis.com/fcm/send/cSJQHSoh_EY:APA91bGm2JKu_cdRydoQGyqa_rv0c2vvSnHkMR_ZuiBkdb7Cnd-LKzEy3-Ki9b4iDEAn22v_b6rSIZBK0qkT3rTSylxy9x3z0VLA8vqzQhuULy5SxVSSNAHOs29wpz7XcTz5tKj--eUC"
 , expirationTime: null
 , keys:
-  { p256dh: "BFjN0Hl4quv_BP3I25jPhKpsFrHtisEbd9h12qokcsvtafhpckqepJBHyzr7Jt_ncWGF2KWb8kSkWmOTQQmJtMw"
-  , auth: "nNH5Sn6XQ7M37gyroXehbg"
+  { p256dh: "BEB-2wDA3L2-Ax0QnF87d89Crf7BXKG9Sw4l9L-LWYGe_Bfk06KyfB0aoBJgLB13Jk_mppl1iQZsUvj8alCgUYA"
+  , auth: "7KzDFGW_BBf9HJ1GO1PDaQ"
   }
 };
 
