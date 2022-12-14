@@ -30,49 +30,49 @@
             
         function subscribeUser() {
           navigator.serviceWorker.ready
-          .then(registration => {
-            log(`navigator.serviceWorker.ready`);
-            registration.pushManager.getSubscription()
-            .then(pushSubscription => {
-              log(`pushSubscription: ${pushSubscription}`);
-              if (!pushSubscription){
-                //the user was never subscribed
-                subscribe(registration);
-              } else {
-                //check if user was subscribed with a different key
-                let json = pushSubscription.toJSON();
-                let public_key = json.keys.p256dh;
-                
-                log(`public_key: ${public_key}`);
-                
-                if (public_key != NEW_PUBLIC_KEY) {
-                  log(`unsubscribing...`);
-                  pushSubscription.unsubscribe().then((result) => {
-                    // You've successfully unsubscribed
-                    log(`unsubscribe success: ${result}`);
-                    subscribe(registration);
-                  }).catch((err) => {
-                    // Unsubscription failed
-                    log(`unsubscribe failed: ${err}`);
-                  })
-                }
-              }
-            });
-          })
+            .then((reg) => {
+              log(`navigator.serviceWorker.ready()`);
+              reg.pushManager.getSubscription()
+                .then((sub) => {
+                  log(`getSubscription() sub: %o`, sub);
+                  if (!sub){
+                    //the user was never subscribed
+                    subscribe(reg);
+                  } else {
+                    //check if user was subscribed with a different key
+                    const json = sub.toJSON();
+                    const public_key = json.keys.p256dh;
+                    
+                    log(`getSubscription() public_key: ${public_key}`);
+                    
+                    if (public_key != NEW_PUBLIC_KEY) {
+                      log(`unsubscribe() initiating...`);
+                      sub.unsubscribe()
+                        .then((result) => {
+                          log(`unsubscribe() success: %o`, result);
+                          subscribe(reg);
+                        })
+                        .catch((err) => {
+                          log(`unsubscribe() failed: %o`, err);
+                        });
+                    }
+                  }
+                });
+            })
         }
 
-        function subscribe(registration) {
-          registration.pushManager.subscribe({
+        function subscribe(reg) {
+          reg.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(NEW_PUBLIC_KEY)
           })
-          .then(subscription => {
+          .then((sub) => {
             //successfully subscribed to push
             //save it to your DB etc....
-            log(`subscribe success: ${subscription}`);
+            log(`subscribe() success: %o`, sub);
           })
           .catch((err) => {
-            log(`subscribe failed: ${err}`);
+            log(`subscribe() failed: %o`, err);
           });
         }
 
