@@ -17,7 +17,7 @@
 
         function log(text) {
           console.log(text);
-          $("div#text").append('<div style="border-top:solid">'+text+'</div>');
+          $("div#text").append('<div style="border-top:solid; white-space: pre;">'+text+'</div>');
         }
 
         Notification.requestPermission((permissionResult) => {
@@ -92,7 +92,7 @@
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
-          console.log('serviceWorker sw.js loaded:' + JSON.stringify(sw, null, 2));
+          log('serviceWorker sw.js loaded:' + JSON.stringify(sw, null, 2));
         });
       }
     </script>
