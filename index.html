@@ -20,7 +20,7 @@
           console.log(text);
         }
 
-        Notification.requestPermission(function (permissionResult) {
+        Notification.requestPermission((permissionResult) => {
           log(`permissionResult: ${permissionResult}`);
           // checking for not denied rather than granted, as some browsers will return undefined
           if (permissionResult !== 'denied') {
@@ -61,7 +61,7 @@
           })
         }
 
-        function subscribe(registration){
+        function subscribe(registration) {
           registration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(NEW_PUBLIC_KEY)

@@ -1,21 +1,16 @@
 self.addEventListener('push', (e) => {
-  const title = 'id-go Authentication request';
-
-  const options = {
-    body: 'Proceed to accept or reject this authentication reqeust',
-    requireInteraction: true, // visible until user clicks or dismisses
-    vibrate: [200, 100, 200, 100, 200, 100, 200], // vibration patter to play when notification is dislpayed
-    icon: './img/id-go.png',
-    image: './img/unitus-logo-360-240.png', // needs to be 360x240
+  const title   = 'id-go Authentication request';
+  const options = 
+  { body              : 'Proceed to accept or reject this authentication reqeust'
+  , requireInteraction: true // visible until user clicks or dismisses
+  , vibrate           : [200, 100, 200, 100, 200, 100, 200] // vibration patter to play when notification is dislpayed
+  , icon              : './img/id-go.png'
+  , image             : './img/unitus-logo-360-240.png', // needs to be 360x240
   };
-  
+
   self.registration.showNotification(title, options)
-    .then(()=>{
-      console.log('calling showNotification()')
-    })
-    .catch((err) => {
-      console.error(`showNotification error: ${err}`)
-    })
+    .then(()     => { console.log('calling showNotification()') })
+    .catch((err) => { console.error(`showNotification error: ${err}`) });
 });
 
 self.addEventListener('notificationclick', (event) => {
