@@ -17,7 +17,7 @@
 
         function log(text) {
           console.log(text);
-          $("div#text").append('<div>'+text+'</div>');
+          $("div#text").append('<div style="border-top:solid">'+text+'</div>');
         }
 
         Notification.requestPermission((permissionResult) => {
@@ -34,7 +34,7 @@
               log('navigator.serviceWorker.ready()');
               reg.pushManager.getSubscription()
                 .then((sub) => {
-                  log('getSubscription() sub:' + JSON.stringify(sub));
+                  log('getSubscription() sub:' + JSON.stringify(sub, null, 2));
                   if (!sub){
                     //the user was never subscribed
                     subscribe(reg);
@@ -49,11 +49,11 @@
                       log('unsubscribe() initiating...');
                       sub.unsubscribe()
                         .then((result) => {
-                          log('unsubscribe() success:' + JSON.stringify(result));
+                          log('unsubscribe() success:' + JSON.stringify(result, null, 2));
                           subscribe(reg);
                         })
                         .catch((err) => {
-                          log('unsubscribe() failed:' + JSON.stringify(err));
+                          log('unsubscribe() failed:' + JSON.stringify(err, null, 2));
                         });
                     }
                   }
@@ -69,10 +69,10 @@
           .then((sub) => {
             //successfully subscribed to push
             //save it to your DB etc....
-            log('subscribe() success:' + JSON.stringify(sub));
+            log('subscribe() success:' + JSON.stringify(sub, null, 2));
           })
           .catch((err) => {
-            log('subscribe() failed:' + JSON.stringify(err));
+            log('subscribe() failed:' + JSON.stringify(err, null, 2));
           });
         }
 
@@ -92,7 +92,7 @@
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
           let sw = await navigator.serviceWorker.register('sw.js');
-          console.log('serviceWorker sw.js loaded:' + JSON.stringify(sw));
+          console.log('serviceWorker sw.js loaded:' + JSON.stringify(sw, null, 2));
         });
       }
     </script>
